@@ -10,21 +10,22 @@ On your local machine, you need Docker installed and running.
 - Log in to Seven Bridges Docker images
 
 	You will need your SB Developer token for your current lab division. Note that 
-	your login name is `<division>/<username>`. 
+	your login name is `division/username` (without the brackets). The division is 
+	usually the laboratory PI `firstname-lastname`. 
 	
-		$ docker login -u username images.sbgenomics.com
+		$ docker login -u division/username images.sbgenomics.com
 
 - Build the image
 
 	You will need the `Dockerfile` downloaded from here and stored in a folder; you will 
 	need the path to this folder. Make sure Docker is running on your current machine. 
-	Substitute `<division>/<username>` with your parameters. This should go fairly quickly. 
+	Substitute `division/username` with your parameters. This should go fairly quickly. 
 	
-		$ docker build -t images.sbgenomics.com/<division>/<username>/geo_uploader:1 path/to/GEO_uploader
+		$ docker build -t images.sbgenomics.com/division/username/geo_uploader:1 path/to/GEO_uploader
 	
 	If you're curious, you can run the image to check things.
 		
-		$ docker run -ti images.sbgenomics.com/<division>/<username>/geo_uploader:1 
+		$ docker run -ti images.sbgenomics.com/division/username/geo_uploader:1 
 		root@b1296410a011:/# which ncftp
 		/usr/bin/ncftp
 		root@b1296410a011:/# exit
@@ -51,7 +52,7 @@ On your local machine, you need Docker installed and running.
 
 	Now the image is pushed to the repository.
 	
-		$ docker push images.sbgenomics.com/<division>/<username>/geo_uploader:1
+		$ docker push images.sbgenomics.com/division/username/geo_uploader:1
 
 ## Create the tool
 
@@ -61,7 +62,7 @@ tool. Give it a name.
 You should start in the Visual Editor for the tool. There are two other tabs: **App Info**, 
 and **Code** in the upper left.
 
-Enter your Docker image name and tag, `images.sbgenomics.com/<division>/<username>/geo_uploader:1` 
+Enter your Docker image name and tag, `images.sbgenomics.com/division/username/geo_uploader:1` 
 in the space provided. There's no mechanism to pick and choose from a list.
 
 You can manually enter the *Base Command*, *Arguments*, and *Input Ports*. Alternatively, 
